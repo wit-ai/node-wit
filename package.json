@@ -1,0 +1,24 @@
+{
+  "name": "node-wit",
+  "version": "3.0.0",
+  "description": "Wit.ai Node.js SDK",
+  "keywords": [
+    "wit",
+    "wit.ai",
+    "bot",
+    "botengine",
+    "bots",
+    "nlp",
+    "automation"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/wit-ai/node-wit",
+  "author": "Julien Odent <julien@wit.ai>",
+  "dependencies": {
+    "node-uuid": "^1.4.7",
+    "request": "^2.69.0"
+  }
+}
