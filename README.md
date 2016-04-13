@@ -12,6 +12,8 @@ npm install --save node-wit
 
 ## Quickstart
 
+Create `index.js`, containing:
+
 ```nodejs
 'use strict';
 const Wit = require('node-wit').Wit;
@@ -36,6 +38,8 @@ const actions = {
 const client = new Wit('YOUR_TOKEN', actions);
 client.interactive();
 ```
+
+Then run in your terminal:
 
 ```bash
 node index.js
