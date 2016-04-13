@@ -14,7 +14,7 @@ npm install --save node-wit
 
 Create `index.js`, containing:
 
-```nodejs
+```js
 'use strict';
 const Wit = require('node-wit').Wit;
 
