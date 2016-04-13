@@ -37,6 +37,10 @@ const client = new Wit('YOUR_TOKEN', actions);
 client.interactive();
 ```
 
+```bash
+node index.js
+```
+
 See `examples` folder for more examples.
 
 ## API
