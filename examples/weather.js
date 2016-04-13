@@ -1,6 +1,6 @@
 'use strict';
 
-const Wit = require('node-wit').Wit;
+const Wit = require('../').Wit;
 
 const token = (() => {
   if (process.argv.length !== 3) {
