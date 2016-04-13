@@ -4,7 +4,7 @@ const Wit = require('../').Wit;
 
 const token = (() => {
   if (process.argv.length !== 3) {
-    console.log('usage: node examples/weather.js <wit-token>');
+    console.log('usage: node examples/template.js <wit-token>');
     process.exit(1);
   }
   return process.argv[2];
@@ -18,14 +18,8 @@ const actions = {
   merge: (context, entities, cb) => {
     cb(context);
   },
-  error: (sessionId, msg) => {
+  error: (sessionid, msg) => {
     console.log('Oops, I don\'t know what to do.');
-  },
-  'fetch-forecast': (context, cb) => {
-    // Here should go the api call, e.g.:
-    // context.forecast = apiCall(context.location)
-    context.forecast = 'cloudy';
-    cb(context);
   },
 };
 

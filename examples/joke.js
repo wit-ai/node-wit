@@ -1,5 +1,8 @@
 'use strict';
 
+// Joke example
+// See https://wit.ai/patapizza/example-joke
+
 const Wit = require('../').Wit;
 
 const token = (() => {
