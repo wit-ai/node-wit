@@ -21,7 +21,7 @@ cp examples/template.js app.js
 Then run in your terminal:
 
 ```bash
-node index.js
+node app.js
 ```
 
 See `examples` folder for more examples.
@@ -169,3 +169,46 @@ client.interactive();
 ```
 
 See the [docs](https://wit.ai/docs) for more information.
+
+
+## Messenger integration example
+
+This quickstart assumes that you have:
+* a [Wit.ai bot setup](https://wit.ai/docs/quickstart);
+* a [Messenger Platform setup](https://developers.facebook.com/docs/messenger-platform/quickstart).
+
+### Install dependencies
+
+```bash
+npm install body-parser express request
+```
+
+### Download and install ngrok
+
+From [here](https://ngrok.com/download).
+
+### Run ngrok
+
+```bash
+./ngrok -http 8445
+```
+
+This will provide `your_ngrok_domain` (the `Forwarding` line).
+
+### Run the example
+
+```bash
+export WIT_TOKEN=your_access_token
+export FB_PAGE_ID=your_page_id
+export FB_PAGE_TOKEN=your_page_token
+export FB_VERIFY_TOKEN=any_token
+node examples/messenger.js
+```
+
+### Subscribe your page to Messenger Webhooks
+
+Using your `FB_VERIFY_TOKEN` and `https://<your_ngrok_domain>/fb` as callback URL.
+
+See the [Messenger Platform docs](https://developers.facebook.com/docs/messenger-platform/quickstart).
+
+### Talk to your bot on Messenger!
