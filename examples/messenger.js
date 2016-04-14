@@ -16,6 +16,9 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
+
+// When not cloning the `node-wit` repo, replace the `require` like so:
+// const Wit = require('node-wit').Wit;
 const Wit = require('../').Wit;
 
 // Webserver parameter

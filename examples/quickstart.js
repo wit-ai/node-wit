@@ -3,6 +3,8 @@
 // Quickstart example
 // See https://wit.ai/l5t/Quickstart
 
+// When not cloning the `node-wit` repo, replace the `require` like so:
+// const Wit = require('node-wit').Wit;
 const Wit = require('../').Wit;
 
 const token = (() => {

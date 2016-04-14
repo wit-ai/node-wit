@@ -3,6 +3,8 @@
 // Joke example
 // See https://wit.ai/patapizza/example-joke
 
+// When not cloning the `node-wit` repo, replace the `require` like so:
+// const Wit = require('node-wit').Wit;
 const Wit = require('../').Wit;
 
 const token = (() => {
