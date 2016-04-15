@@ -137,10 +137,10 @@ const actions = {
       cb();
     }
   },
-  merge: (context, entities, cb) => {
+  merge: (sessionId, context, entities, message, cb) => {
     cb(context);
   },
-  error: (sessionid, msg) => {
+  error: (sessionId, context) => {
     console.log('Oops, I don\'t know what to do.');
   },
   // You should implement your custom actions here

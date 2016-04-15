@@ -46,7 +46,7 @@ const actions = {
     console.log(msg);
     cb();
   },
-  merge: (context, entities, cb) => {
+  merge: (sessionId, context, entities, message, cb) => {
     delete context.joke;
     const category = firstEntityValue(entities, 'category');
     if (category) {
@@ -60,10 +60,10 @@ const actions = {
     }
     cb(context);
   },
-  error: (sessionId, msg) => {
+  error: (sessionId, context) => {
     console.log('Oops, I don\'t know what to do.');
   },
-  'select-joke': (context, cb) => {
+  'select-joke': (sessionId, context, cb) => {
     const jokes = allJokes[context.cat || 'default'];
     context.joke = jokes[Math.floor(Math.random() * jokes.length)];
     cb(context);

@@ -17,10 +17,10 @@ const actions = {
     console.log(msg);
     cb();
   },
-  merge: (context, entities, cb) => {
+  merge: (sessionId, context, entities, message, cb) => {
     cb(context);
   },
-  error: (sessionid, msg) => {
+  error: (sessionId, context) => {
     console.log('Oops, I don\'t know what to do.');
   },
 };

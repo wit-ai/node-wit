@@ -53,16 +53,17 @@ const actions = {
     console.log(msg);
     cb();
   },
-  merge: (context, entities, cb) => {
+  merge: (sessionId, context, entities, message, cb) => {
     cb(context);
   },
-  error: (sessionid, msg) => {
+  error: (sessionId, context) => {
     console.log('Oops, I don\'t know what to do.');
   },
 };
 ```
 
-A custom action takes two parameters:
+A custom action takes the following parameters:
+* `sessionId` - a unique identifier describing the user session
 * `context` - the object representing the session state
 * `cb(context)` - a callback function to fire at the end of your action with the updated context.
 

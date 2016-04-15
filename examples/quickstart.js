@@ -32,7 +32,7 @@ const actions = {
     console.log(msg);
     cb();
   },
-  merge: (context, entities, cb) => {
+  merge: (sessionId, context, entities, message, cb) => {
     // Retrieve the location entity and store it into a context field
     const loc = firstEntityValue(entities, 'location');
     if (loc) {
@@ -40,10 +40,10 @@ const actions = {
     }
     cb(context);
   },
-  error: (sessionId, msg) => {
+  error: (sessionId, context) => {
     console.log('Oops, I don\'t know what to do.');
   },
-  'fetch-weather': (context, cb) => {
+  'fetch-weather': (sessionId, context, cb) => {
     // Here should go the api call, e.g.:
     // context.forecast = apiCall(context.loc)
     context.forecast = 'sunny';
