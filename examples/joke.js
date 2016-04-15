@@ -42,8 +42,8 @@ const firstEntityValue = (entities, entity) => {
 };
 
 const actions = {
-  say: (sessionId, msg, cb) => {
-    console.log(msg);
+  say: (sessionId, context, message, cb) => {
+    console.log(message);
     cb();
   },
   merge: (sessionId, context, entities, message, cb) => {
@@ -60,8 +60,8 @@ const actions = {
     }
     cb(context);
   },
-  error: (sessionId, context) => {
-    console.log('Oops, I don\'t know what to do.');
+  error: (sessionId, context, error) => {
+    console.log(error.message);
   },
   'select-joke': (sessionId, context, cb) => {
     const jokes = allJokes[context.cat || 'default'];
