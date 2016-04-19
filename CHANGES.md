@@ -1,3 +1,9 @@
+## v3.2.2
+
+- fixing context not updated in interactive mode
+- fixing array values in context
+- create readline interface only in interactive mode
+
 ## v3.2.0
 
 Unifying action parameters.
