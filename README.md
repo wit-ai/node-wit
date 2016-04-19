@@ -185,7 +185,7 @@ From [here](https://ngrok.com/download).
 ### Run ngrok
 
 ```bash
-./ngrok -http 8445
+./ngrok http 8445
 ```
 
 This will provide `your_ngrok_domain` (the `Forwarding` line).
