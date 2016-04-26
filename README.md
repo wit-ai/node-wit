@@ -1,4 +1,4 @@
-# Wit Node.js SDK
+# Wit Node.js SDK [![npm](https://img.shields.io/npm/v/node-wit.svg)](https://www.npmjs.com/package/node-wit)
 
 `node-wit` is the Node.js SDK for [Wit.ai](https://wit.ai).
 
