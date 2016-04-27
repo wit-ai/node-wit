@@ -42,11 +42,11 @@ const firstEntityValue = (entities, entity) => {
 };
 
 const actions = {
-  say: (sessionId, context, message, cb) => {
+  say(sessionId, context, message, cb) {
     console.log(message);
     cb();
   },
-  merge: (sessionId, context, entities, message, cb) => {
+  merge(sessionId, context, entities, message, cb) {
     delete context.joke;
     const category = firstEntityValue(entities, 'category');
     if (category) {
@@ -60,10 +60,10 @@ const actions = {
     }
     cb(context);
   },
-  error: (sessionId, context, error) => {
+  error(sessionId, context, error) {
     console.log(error.message);
   },
-  'select-joke': (sessionId, context, cb) => {
+  ['select-joke'](sessionId, context, cb) {
     const jokes = allJokes[context.cat || 'default'];
     context.joke = jokes[Math.floor(Math.random() * jokes.length)];
     cb(context);
