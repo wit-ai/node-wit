@@ -1,4 +1,4 @@
-# Wit Node.js SDK
+# Wit Node.js SDK [![npm](https://img.shields.io/npm/v/node-wit.svg)](https://www.npmjs.com/package/node-wit)
 
 `node-wit` is the Node.js SDK for [Wit.ai](https://wit.ai).
 
@@ -43,14 +43,14 @@ You need to provide at least an implementation for the special actions `say`, `m
 A minimal `actions` object looks like this:
 ```js
 const actions = {
-  say: (sessionId, context, message, cb) => {
+  say(sessionId, context, message, cb) {
     console.log(message);
     cb();
   },
-  merge: (sessionId, context, entities, message, cb) => {
+  merge(sessionId, context, entities, message, cb) {
     cb(context);
   },
-  error: (sessionId, context, error) => {
+  error(sessionId, context, error) {
     console.log(error.message);
   },
 };
@@ -89,11 +89,13 @@ The Wit [message](https://wit.ai/docs/http/20160330#get-intent-via-text-link) AP
 
 Takes the following parameters:
 * `message` - the text you want Wit.ai to extract the information from
+* `context` - (optional) the object representing the session state
 * `cb(error, data)` - a callback function with the JSON response
 
 Example:
 ```js
-client.message('what is the weather in London?', (error, data) => {
+const context = {};
+client.message('what is the weather in London?', context, (error, data) => {
   if (error) {
     console.log('Oops! Got an error: ' + error);
   } else {
