@@ -89,13 +89,12 @@ The Wit [message](https://wit.ai/docs/http/20160330#get-intent-via-text-link) AP
 
 Takes the following parameters:
 * `message` - the text you want Wit.ai to extract the information from
-* `context` - (optional) the object representing the session state
 * `cb(error, data)` - a callback function with the JSON response
 
 Example:
 ```js
 const context = {};
-client.message('what is the weather in London?', context, (error, data) => {
+client.message('what is the weather in London?', (error, data) => {
   if (error) {
     console.log('Oops! Got an error: ' + error);
   } else {
