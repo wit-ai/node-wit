@@ -1,3 +1,7 @@
+## v3.3.0
+
+- callbacks are not called asynchronously by default, choice is left to the developer (use process.nextTick in your callback to emulate the previous behavior)
+
 ## v3.2.2
 
 - fixing context not updated in interactive mode
