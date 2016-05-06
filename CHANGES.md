@@ -1,6 +1,8 @@
 ## v3.3.0
 
 - callbacks are not called asynchronously by default, choice is left to the developer (use process.nextTick in your callback to emulate the previous behavior)
+- using `node-fetch` instead of `requests`
+- the `message()` API takes now an optional context as second parameter
 
 ## v3.2.2
 

@@ -177,7 +177,7 @@ This quickstart assumes that you have:
 ### Install dependencies
 
 ```bash
-npm install body-parser express request
+npm install body-parser express node-fetch
 ```
 
 ### Download and install ngrok
