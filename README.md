@@ -94,8 +94,7 @@ Takes the following parameters:
 
 Example:
 ```js
-const context = {};
-client.message('what is the weather in London?', context, (error, data) => {
+client.message('what is the weather in London?', (error, data) => {
   if (error) {
     console.log('Oops! Got an error: ' + error);
   } else {
