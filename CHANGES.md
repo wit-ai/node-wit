@@ -1,3 +1,5 @@
+- warns instead of throwing when validating actions
+
 ## v3.3.0
 
 - callbacks are not called asynchronously by default, choice is left to the developer (use process.nextTick in your callback to emulate the previous behavior)
