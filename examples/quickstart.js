@@ -46,6 +46,8 @@ const actions = {
       context.date = Math.round((new Date(date)).getTime()/1000);
       // context.date = date;
     }
+
+    console.log('unix date: ' + context.date)
     
     cb(context);
   },
