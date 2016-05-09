@@ -9,7 +9,7 @@ const Wit = require('../').Wit;
 
 const token = (() => {
   if (process.argv.length !== 3) {
-    console.log('usage: node examples/weather.js <wit-token>');
+    console.log('usage: node examples/quickstart.js <wit-token>');
     process.exit(1);
   }
   return process.argv[2];
