@@ -47,7 +47,7 @@ const actions = {
       // context.date = date;
     }
 
-    console.log('unix date: ' + context.date)
+    console.log('unix date: ' + context.date);
     
     cb(context);
   },
