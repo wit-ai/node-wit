@@ -1,5 +1,7 @@
 'use strict';
 
+var openWeatherApiKey = process.env.OPENWEATHER_KEY
+
 // Quickstart example
 // See https://wit.ai/l5t/Quickstart
 
@@ -38,6 +40,15 @@ const actions = {
     if (loc) {
       context.loc = loc;
     }
+
+    const date = firstEntityValue(entities, 'datetime');
+    if (date) {
+      context.date = Math.round((new Date(date)).getTime()/1000);
+      // context.date = date;
+    }
+
+    console.log('unix date: ' + context.date)
+    
     cb(context);
   },
   error(sessionId, context, error) {
@@ -46,8 +57,12 @@ const actions = {
   ['fetch-weather'](sessionId, context, cb) {
     // Here should go the api call, e.g.:
     // context.forecast = apiCall(context.loc)
-    context.forecast = 'sunny';
-    cb(context);
+    var Weather = require('./weather')(openWeatherApiKey).get(context.loc, context.date, (err, forecast) => { 
+      if (err) throw err; 
+      context.forecast = forecast; 
+
+      cb(context); 
+    });
   },
 };
 
