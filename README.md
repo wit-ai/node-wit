@@ -22,6 +22,47 @@ See `examples` folder for more examples.
 
 ## API
 
+### Version change
+
+On 2016, May 11th, the /message API was updated to reflect the new Bot Engine model: intent are now entities. 
+We updated the SDK to the latest [version parameter](https://github.com/wit-ai/node-wit/blob/master/lib/wit.js#L11)
+
+```json
+{
+  "msg_id" : "e86468e5-b9e8-4645-95ce-b41a66fda88d",
+  "_text" : "hello",
+  "entities" : {
+    "intent" : [ {
+      "confidence" : 0.9753469589149633,
+      "value" : "greetings"
+    } ]
+  }
+}
+```
+
+Version prior to 20160511 will return the old format
+
+```json
+{
+  "msg_id" : "722fc79b-725c-4ca1-8029-b7f57ff88f54",
+  "_text" : "hello",
+  "outcomes" : [ {
+    "_text" : "hello",
+    "confidence" : null,
+    "intent" : "default_intent",
+    "entities" : {
+      "intent" : [ {
+        "confidence" : 0.9753469589149633,
+        "value" : "greetings"
+      } ]
+    }
+  } ],
+  "WARNING" : "DEPRECATED"
+}
+```
+
+
+
 ### Overview
 
 The Wit module provides a Wit class with the following methods:
