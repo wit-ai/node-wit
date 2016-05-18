@@ -25,7 +25,8 @@ See `examples` folder for more examples.
 ### Version change
 
 On 2016, May 11th, the /message API was updated to reflect the new Bot Engine model: intent are now entities. 
-We updated the SDK to the latest [version parameter](https://github.com/wit-ai/node-wit/blob/master/lib/wit.js#L11)
+We updated the SDK to the latest version: 20160516.
+You can target a specific version by setting the env variable `WIT_API_VERSION`.
 
 ```json
 {
@@ -40,7 +41,7 @@ We updated the SDK to the latest [version parameter](https://github.com/wit-ai/n
 }
 ```
 
-Version prior to 20160511 will return the old format
+Version prior to 20160511 will return the old format:
 
 ```json
 {
@@ -60,8 +61,6 @@ Version prior to 20160511 will return the old format
   "WARNING" : "DEPRECATED"
 }
 ```
-
-
 
 ### Overview
 

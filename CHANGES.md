@@ -1,8 +1,11 @@
-- warns instead of throwing when validating actions
+## v3.3.2
+
+- allows for overriding API version, by setting `WIT_API_VERSION`
 
 ## v3.3.1
-- adding API versioning
-
+- adding API versioning (defaults to `20160516`)
+- warns instead of throwing when validating actions
+- fixing null values when cloning context
 
 ## v3.3.0
 
