@@ -1,3 +1,5 @@
+- INFO level as an alias for LOG
+
 ## v3.3.2
 
 - allows for overriding API version, by setting `WIT_API_VERSION`

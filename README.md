@@ -107,11 +107,11 @@ const Wit = require('node-wit').Wit;
 const client = new Wit(token, actions);
 ```
 
-The `logger` object should implement the methods `debug`, `log`, `warn` and `error`.
+The `logger` object should implement the methods `debug`, `log`/`info`, `warn` and `error`.
 All methods take a single parameter `message`.
 
 For convenience, we provide a `Logger`, taking a log level parameter (provided as `logLevels`).
-The following levels are defined: `DEBUG`, `LOG`, `WARN`, `ERROR`.
+The following levels are defined: `DEBUG`, `LOG`/`INFO`, `WARN`, `ERROR`.
 
 Example:
 ```js
