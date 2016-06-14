@@ -18,6 +18,7 @@
   "repository": "https://github.com/wit-ai/node-wit",
   "author": "Julien Odent <julien@wit.ai>",
   "dependencies": {
+    "https-proxy-agent": "^1.0.0",
     "node-fetch": "^1.5.1",
     "node-uuid": "^1.4.7"
   }
