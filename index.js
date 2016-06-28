@@ -1,5 +1,4 @@
 module.exports = {
-  Logger: require('./lib/logger.js').Logger,
-  logLevels: require('./lib/logger.js').logLevels,
+  log: require('./lib/log.js'),
   Wit: require('./lib/wit.js').Wit,
 }

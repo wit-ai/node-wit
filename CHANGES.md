@@ -1,4 +1,20 @@
-- INFO level as an alias for LOG
+## v4.0.0
+
+After a lot of internal dogfooding and bot building, we decided to change the API in a backwards-incompatible way. The changes are described below and aim to simplify user code and accommodate upcoming features.
+
+We moved to a Promise-based API, instead of callbacks. This makes the code simpler and the error-handling more straight-forward. It's also inline with where JS is going with standards like `fetch()` and `async/await` that are based on Promises.
+
+See `./examples` to see how to use the new API.
+
+
+### Breaking changes
+
+- `say` renamed to `send` to reflect that it deals with more than just text
+- Removed built-in actions `merge` and `error`
+- Actions signature simplified with `request` and `response` arguments
+- Actions need to return promises and do not receive the `cb` parameter anymore
+- INFO level replaces LOG level
+- configuration is now done when instantiating the `Wit` object, instead of using env vars
 
 ## v3.3.2
 

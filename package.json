@@ -1,6 +1,6 @@
 {
   "name": "node-wit",
-  "version": "3.3.2",
+  "version": "4.0.0",
   "description": "Wit.ai Node.js SDK",
   "keywords": [
     "wit",
@@ -16,9 +16,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "https://github.com/wit-ai/node-wit",
-  "author": "Julien Odent <julien@wit.ai>",
+  "author": "The Wit Team <help@wit.ai>",
   "dependencies": {
     "node-fetch": "^1.5.1",
     "node-uuid": "^1.4.7"
+  },
+  "engines": {
+    "node" : ">=4.0.0"
   }
 }
