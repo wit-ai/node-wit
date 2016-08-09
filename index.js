@@ -1,4 +1,5 @@
 module.exports = {
-  log: require('./lib/log.js'),
-  Wit: require('./lib/wit.js').Wit,
+  log: require('./lib/log'),
+  Wit: require('./lib/wit'),
+  interactive: require('./lib/interactive')
 }
