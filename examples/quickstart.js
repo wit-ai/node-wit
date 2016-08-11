@@ -56,4 +56,6 @@ const actions = {
 };
 
 const client = new Wit({accessToken, actions});
-client.interactive();
+
+const interactive = require('../lib/interactive');
+interactive(client);
