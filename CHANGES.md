@@ -1,10 +1,9 @@
-## v4.1.0
-
 - Support for different JS environments
 
 ### Breaking changes
 
-- interactive is no longer a function on the `Wit` client. Instead, you require it from the library. `require('node-wit').interactive`
+- `interactive` is no longer a function on the `Wit` client. Instead, you require it from the library: `require('node-wit').interactive`
+- `runActions` now reset the last turn on new messages and errors.
 
 ## v4.0.0
 
