@@ -162,7 +162,7 @@ Starts an interactive conversation with your bot.
 Example:
 ```js
 const {interactive} = require('node-wit');
-interactive(client)
+interactive(client);
 ```
 
 See the [docs](https://wit.ai/docs) for more information.
