@@ -1,12 +1,16 @@
 'use strict';
 
 let Wit = null;
+let interactive = null;
 try {
   // if running from repo
   Wit = require('../').Wit;
+  interactive = require('../').interactive;
 } catch (e) {
   Wit = require('node-wit').Wit;
+  interactive = require('node-wit').interactive;
 }
+
 
 const accessToken = (() => {
   if (process.argv.length !== 3) {
@@ -84,4 +88,4 @@ const actions = {
 };
 
 const client = new Wit({accessToken, actions});
-client.interactive();
+interactive(client);

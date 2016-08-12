@@ -1,3 +1,9 @@
+## v4.1.0
+
+### Breaking changes
+
+- interactive is no longer a function on the `Wit` client. Instead, you require it from the library. `require('node-wit').interactive`
+
 ## v4.0.0
 
 After a lot of internal dogfooding and bot building, we decided to change the API in a backwards-incompatible way. The changes are described below and aim to simplify user code and accommodate upcoming features.
