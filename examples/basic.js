@@ -8,7 +8,7 @@ try {
   interactive = require('../').interactive;
 } catch (e) {
   Wit = require('node-wit').Wit;
-  // interactive = require('node-wit').interactive;
+  interactive = require('node-wit').interactive;
 }
 
 const accessToken = (() => {
