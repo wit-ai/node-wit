@@ -1,4 +1,5 @@
 - Support for different JS environments
+- `converse` now takes `reset` as an optional parameter
 
 ### Breaking changes
 
