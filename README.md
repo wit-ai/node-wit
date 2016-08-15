@@ -110,6 +110,7 @@ client.message('what is the weather in London?', {})
 ### runActions
 
 A higher-level method to the Wit converse API.
+`runActions` resets the last turn on new messages and errors.
 
 Takes the following parameters:
 * `sessionId` - a unique identifier describing the user session
@@ -145,6 +146,7 @@ Takes the following parameters:
 * `sessionId` - a unique identifier describing the user session
 * `message` - the text received from the user
 * `context` - the object representing the session state
+* `reset` - (optional) whether to reset the last turn
 
 Example:
 ```js
