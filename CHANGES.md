@@ -1,3 +1,5 @@
+## v4.1.0
+
 - Support for different JS environments
 - `converse` now takes `reset` as an optional parameter
 
