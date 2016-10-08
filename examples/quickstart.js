@@ -4,8 +4,8 @@ let Wit = null;
 let interactive = null;
 try {
   // if running from repo
-  Wit = require('../').Wit;
-  interactive = require('../').interactive;
+  Wit = require('../dev').Wit;
+  interactive = require('../dev').interactive;
 } catch (e) {
   Wit = require('node-wit').Wit;
   interactive = require('node-wit').interactive;
