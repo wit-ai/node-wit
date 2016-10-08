@@ -1,8 +1,7 @@
 {
-  "name": "node-wit-lambda",
+  "name": "node-wit",
   "version": "4.1.0",
   "description": "Wit.ai Node.js SDK",
-  "private": true,
   "keywords": [
     "wit",
     "wit.ai",
@@ -15,6 +14,7 @@
   "main": "index.js",
   "scripts": {
     "compile": "rm -rf bin/* && ./node_modules/.bin/babel lib --out-dir bin",
+    "prepublish": "npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "https://github.com/wit-ai/node-wit",
