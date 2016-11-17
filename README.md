@@ -43,6 +43,7 @@ The Wit constructor takes the following parameters:
 * `actions` - (optional if only using `.message()`) the object with your actions
 * `logger` - (optional) the object handling the logging.
 * `apiVersion` - (optional) the API version to use instead of the recommended one
+* `maxSteps` - (optional) the maximum number of actions to execute (see `runActions` method)
 
 The `actions` object has action names as properties, and action functions as values.
 Action implementations must return Promises (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
