@@ -38,23 +38,19 @@ const actions = {
   send(request, response) {
     const {sessionId, context, entities} = request;
     const {text, quickreplies} = response;
-    return new Promise(function(resolve, reject) {
-      console.log('sending...', JSON.stringify(response));
-      return resolve();
-    });
+    console.log('sending...', JSON.stringify(response));
   },
   getForecast({context, entities}) {
-    return new Promise(function(resolve, reject) {
-      var location = firstEntityValue(entities, 'location')
-      if (location) {
-        context.forecast = 'sunny in ' + location; // we should call a weather API here
-        delete context.missingLocation;
-      } else {
-        context.missingLocation = true;
-        delete context.forecast;
-      }
-      return resolve(context);
-    });
+    var location = firstEntityValue(entities, 'location')
+    if (location) {
+      console.log('got', location)
+      context.forecast = 'sunny in ' + location; // we should call a weather API here
+      delete context.missingLocation;
+    } else {
+      context.missingLocation = true;
+      delete context.forecast;
+    }
+    return context;
   },
 };
 
