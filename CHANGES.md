@@ -1,3 +1,5 @@
+## v4.2.0
+
 - support actions that do not return promises
 - support the case where an action does not return a Promise
 - update uuid to version 3.0.0
