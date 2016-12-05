@@ -210,3 +210,9 @@ Version prior to 20160511 will return the old format:
   "WARNING" : "DEPRECATED"
 }
 ```
+
+## Running tests
+
+1. Create a new app in wit.ai web console using tests/wit-ai-app-for-tests.zip
+2. Copy the Server Access Token from app settings
+3. Run `WIT_TOKEN=XXX npm test`, where XXX is the Server Access Token

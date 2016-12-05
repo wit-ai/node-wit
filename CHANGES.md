@@ -1,3 +1,12 @@
+## v4.2.0
+
+- support actions that do not return promises
+- support the case where an action does not return a Promise
+- update uuid to version 3.0.0
+- Support older versions of node
+- 'Use strict' on interactive.js
+- Check for bot's message in messenger example
+
 ## v4.1.0
 
 - Support for different JS environments
