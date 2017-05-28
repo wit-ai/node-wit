@@ -4,9 +4,9 @@
 // We assume you have:
 // * a Wit.ai bot setup (https://wit.ai/docs/quickstart)
 // * a Messenger Platform setup (https://developers.facebook.com/docs/messenger-platform/quickstart)
-// You need to `npm install` the following dependencies: body-parser, express, request.
+// You need to `npm install` the following dependencies: body-parser, express, node-fetch.
 //
-// 1. npm install body-parser express request
+// 1. npm install body-parser express node-fetch
 // 2. Download and install ngrok from https://ngrok.com/download
 // 3. ./ngrok http 8445
 // 4. WIT_TOKEN=your_access_token FB_APP_SECRET=your_app_secret FB_PAGE_TOKEN=your_page_token node examples/messenger.js
@@ -17,7 +17,6 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const express = require('express');
 const fetch = require('node-fetch');
-const request = require('request');
 
 let Wit = null;
 let log = null;
