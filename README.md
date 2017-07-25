@@ -31,8 +31,6 @@ See `examples/messenger.js` for a thoroughly documented tutorial.
 
 The Wit module provides a Wit class with the following methods:
 * `message` - the Wit [message](https://wit.ai/docs/http/20160330#get-intent-via-text-link) API
-* `converse` - the low-level Wit [converse](https://wit.ai/docs/http/20160330#converse-link) API
-* `runActions` - a higher-level method to the Wit converse API
 
 You can also require a library function to test out your bot in the terminal. `require('node-wit').interactive`
 
@@ -40,26 +38,8 @@ You can also require a library function to test out your bot in the terminal. `r
 
 The Wit constructor takes the following parameters:
 * `accessToken` - the access token of your Wit instance
-* `actions` - (optional if only using `.message()`) the object with your actions
 * `logger` - (optional) the object handling the logging.
 * `apiVersion` - (optional) the API version to use instead of the recommended one
-
-The `actions` object has action names as properties, and action functions as values.
-Action implementations must return Promises (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-You must provide at least an implementation for the special action `send`.
-
-* `send` takes 2 parameters: `request` and `response`
-* custom actions take 1 parameter: `request`
-
-#### Request
-* `sessionId` (string) - a unique identifier describing the user session
-* `context` (object) - the object representing the session state
-* `text` (string) - the text message sent by your end-user
-* `entities` (object) - the entities extracted by Wit's NLU
-
-#### Response
-* `text` (string) - The text your bot needs to send to the user (as described in your Wit.ai Stories)
-* `quickreplies`
 
 The `logger` object should implement the methods `debug`, `info`, `warn` and `error`.
 They can receive an arbitrary number of parameters to log.
@@ -71,25 +51,13 @@ const {Wit, log} = require('node-wit');
 
 const client = new Wit({
   accessToken: MY_TOKEN,
-  actions: {
-    send(request, response) {
-      return new Promise(function(resolve, reject) {
-        console.log(JSON.stringify(response));
-        return resolve();
-      });
-    },
-    myAction({sessionId, context, text, entities}) {
-      console.log(`Session ${sessionId} received ${text}`);
-      console.log(`The current context is ${JSON.stringify(context)}`);
-      console.log(`Wit extracted ${JSON.stringify(entities)}`);
-      return Promise.resolve(context);
-    }
-  },
   logger: new log.Logger(log.DEBUG) // optional
 });
+
+console.log(client.message('set an alarm tomorrow at 7am'));
 ```
 
-### message
+### .message()
 
 The Wit [message](https://wit.ai/docs/http/20160330#get-intent-via-text-link) API.
 
@@ -107,7 +75,21 @@ client.message('what is the weather in London?', {})
 .catch(console.error);
 ```
 
-### runActions
+### interactive
+
+Starts an interactive conversation with your bot.
+
+Example:
+```js
+const {interactive} = require('node-wit');
+interactive(client);
+```
+
+See the [docs](https://wit.ai/docs) for more information.
+
+### .runActions()
+
+**DEPRECATED** See [our blog post](https://wit.ai/blog/2017/07/27/sunsetting-stories) for a migration plan.
 
 A higher-level method to the Wit converse API.
 `runActions` resets the last turn on new messages and errors.
@@ -138,7 +120,9 @@ client.runActions(sessionId, 'what is the weather in London?', context0)
 
 See `./examples/messenger.js` for a full-fledged example
 
-### converse
+### .converse()
+
+**DEPRECATED** See [our blog post](https://wit.ai/blog/2017/07/27/sunsetting-stories) for a migration plan.
 
 The low-level Wit [converse](https://wit.ai/docs/http/20160330#converse-link) API.
 
@@ -156,19 +140,6 @@ client.converse('my-user-session-42', 'what is the weather in London?', {})
 })
 .catch(console.error);
 ```
-
-### interactive
-
-Starts an interactive conversation with your bot.
-
-Example:
-```js
-const {interactive} = require('node-wit');
-interactive(client);
-```
-
-See the [docs](https://wit.ai/docs) for more information.
-
 
 ## Changing the API version
 

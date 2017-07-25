@@ -1,3 +1,7 @@
+## v4.3.0
+- `converse` and `runActions` are deprecated
+- `interactive` now calls `message`
+
 ## v4.2.0
 
 - support actions that do not return promises
