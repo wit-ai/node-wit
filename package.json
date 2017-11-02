@@ -18,7 +18,7 @@
   "repository": "https://github.com/wit-ai/node-wit",
   "author": "The Wit Team <help@wit.ai>",
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
+    "cross-fetch": "^1.1.0",
     "uuid": "^3.0.0"
   },
   "engines": {
