@@ -55,10 +55,10 @@ crypto.randomBytes(8, (err, buff) => {
 // See the Send API reference
 // https://developers.facebook.com/docs/messenger-platform/send-api-reference
 
-const fbMessage = (id, text) => {
+const fbMessage = (id, data) => {
   const body = JSON.stringify({
     recipient: { id },
-    message: { text },
+    message: data,
   });
   const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
   return fetch('https://graph.facebook.com/me/messages?' + qs, {
@@ -102,15 +102,24 @@ const findOrCreateSession = (fbid) => {
 
 // Our bot actions
 const actions = {
-  send({sessionId}, {text}) {
+  send({sessionId}, response) {
     // Our bot has something to say!
     // Let's retrieve the Facebook user whose session belongs to
     const recipientId = sessions[sessionId].fbid;
     if (recipientId) {
       // Yay, we found our recipient!
+      
+      if (response.quickreplies) { // Wit.ai wants us to include quickreplies, alright!
+				response.quick_replies = []; // The quick reply object from Wit.ai needs to be renamed.
+				for (var i = 0, len = response.quickreplies.length; i < len; i++) { // Loop through quickreplies
+					response.quick_replies.push({ title: response.quickreplies[i], content_type: 'text', payload: 'CUSTOM_WIT_AI_QUICKREPLY_ID' + i });
+				}
+				delete response.quickreplies;
+			}
+      
       // Let's forward our bot response to her.
       // We return a promise to let our bot know when we're done sending
-      return fbMessage(recipientId, text)
+      return fbMessage(recipientId, response)
       .then(() => null)
       .catch((err) => {
         console.error(
@@ -181,8 +190,8 @@ app.post('/webhook', (req, res) => {
 
           if (attachments) {
             // We received an attachment
-            // Let's reply with an automatic message
-            fbMessage(sender, 'Sorry I can only process text messages for now.')
+            // Let's reply with an automatic message or implement handling for payloads (from quick replies)
+            fbMessage(sender, { text: 'Sorry I can only process text messages for now.' })
             .catch(console.error);
           } else if (text) {
             // We received a text message
