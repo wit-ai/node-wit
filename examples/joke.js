@@ -20,7 +20,7 @@ const accessToken = (() => {
 })();
 
 // Joke example
-// See https://wit.ai/aforaleka/wit-example-app
+// See https://wit.ai/aforaleka/wit-example-joke-bot/
 
 const allJokes = {
   chuck: [
@@ -71,5 +71,5 @@ const handleMessage = ({entities}) => {
   }
 };
 
-const client = new Wit({accessToken, handleMessage});
-interactive(client);
+const client = new Wit({accessToken});
+interactive(client, handleMessage);

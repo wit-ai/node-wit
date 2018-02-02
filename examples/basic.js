@@ -24,5 +24,5 @@ const handleMessage = (rsp) => {
   console.log('extracted these entities: ', JSON.stringify(rsp.entities));
 }
 
-const client = new Wit({accessToken, handleMessage});
+const client = new Wit({accessToken});
 interactive(client);
