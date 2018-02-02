@@ -19,14 +19,10 @@ const accessToken = (() => {
   return process.argv[2];
 })();
 
-const actions = {
-  send(request, response) {
-    const {sessionId, context, entities} = request;
-    const {text, quickreplies} = response;
-    console.log('user said...', request.text);
-    console.log('sending...', JSON.stringify(response));
-  },
-};
+const handleMessage = (rsp) => {
+  console.log('user said: ', rsp._text);
+  console.log('extracted these entities: ', JSON.stringify(rsp.entities));
+}
 
-const client = new Wit({accessToken, actions});
+const client = new Wit({accessToken, handleMessage});
 interactive(client);

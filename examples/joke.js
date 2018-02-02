@@ -11,7 +11,6 @@ try {
   interactive = require('node-wit').interactive;
 }
 
-
 const accessToken = (() => {
   if (process.argv.length !== 3) {
     console.log('usage: node examples/joke.js <wit-access-token>');
@@ -21,7 +20,7 @@ const accessToken = (() => {
 })();
 
 // Joke example
-// See https://wit.ai/patapizza/example-joke
+// See https://wit.ai/aforaleka/wit-example-app
 
 const allJokes = {
   chuck: [
@@ -49,43 +48,28 @@ const firstEntityValue = (entities, entity) => {
   return typeof val === 'object' ? val.value : val;
 };
 
-const actions = {
-  send(request, response) {
-    console.log('sending...', JSON.stringify(response));
-    return Promise.resolve();
-  },
-  merge({entities, context, message, sessionId}) {
-    return new Promise(function(resolve, reject) {
-      delete context.joke;
-      const category = firstEntityValue(entities, 'category');
-      if (category) {
-        context.cat = category;
-      }
-      const sentiment = firstEntityValue(entities, 'sentiment');
-      if (sentiment) {
-        context.ack = sentiment === 'positive' ? 'Glad you liked it.' : 'Hmm.';
-      } else {
-        delete context.ack;
-      }
-      return resolve(context);
-    });
-  },
-  ['select-joke']({entities, context}) {
-    return new Promise(function(resolve, reject) {
-      // const category = firstEntityValue(entities, 'category') || 'default';
-      // const sentiment = firstEntityValue(entities, 'sentiment');
-      // if (sentiment) {
-      //   context.ack = sentiment === 'positive' ? 'Glad you liked it.' : 'Hmm.';
-      // } else {
-      //   delete context.ack;
-      // }
-
-      const jokes = allJokes[context.cat || 'default'];
-      context.joke = jokes[Math.floor(Math.random() * jokes.length)];
-      return resolve(context);
-    });
-  },
+const handleMessage = ({entities}) => {
+  const tellJoke = firstEntityValue(entities, 'getJoke');
+  const greetings = firstEntityValue(entities, 'greetings');
+  const category = firstEntityValue(entities, 'category');
+  const sentiment = firstEntityValue(entities, 'sentiment');
+  if (tellJoke) {
+    if (category) {
+      const jokes = allJokes[category];
+      console.log(jokes[Math.floor(Math.random() * jokes.length)]);
+    } else {
+      console.log(allJokes['default'][0]);
+    }
+  } else if (sentiment) {
+    const reply = sentiment === 'positive' ? 'Glad you liked it.' : 'Hmm.';
+    console.log(reply);
+  } else if (greetings) {
+    console.log('hey this is joke bot :)');
+  } else {
+    const reply = "I can tell jokes! Say 'tell me a joke about tech'!";
+    console.log(reply);
+  }
 };
 
-const client = new Wit({accessToken, actions});
+const client = new Wit({accessToken, handleMessage});
 interactive(client);
