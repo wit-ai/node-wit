@@ -20,7 +20,7 @@ const accessToken = (() => {
 })();
 
 // Quickstart example
-// See https://wit.ai/ar7hur/quickstart
+// See https://wit.ai/aforaleka/wit-app-for-tests/
 
 const firstEntityValue = (entities, entity) => {
   const val = entities && entities[entity] &&
@@ -34,24 +34,19 @@ const firstEntityValue = (entities, entity) => {
   return typeof val === 'object' ? val.value : val;
 };
 
-const actions = {
-  send(request, response) {
-    const {sessionId, context, entities} = request;
-    const {text, quickreplies} = response;
-    console.log('sending...', JSON.stringify(response));
-  },
-  getForecast({context, entities}) {
-    var location = firstEntityValue(entities, 'location');
+const handleMessage = ({entities}) => {
+  const getWeather = firstEntityValue(entities, 'getWeather');
+  const location = firstEntityValue(entities, 'location');
+  if (getWeather) {
     if (location) {
-      context.forecast = 'sunny in ' + location; // we should call a weather API here
-      delete context.missingLocation;
+      console.log('sunny in ' + location); // we should call a weather API here
     } else {
-      context.missingLocation = true;
-      delete context.forecast;
+      console.log('umm where?'); // missing location
     }
-    return context;
-  },
+  } else {
+    console.log('ask me about the weather in San Francisco!');
+  }
 };
 
-const client = new Wit({accessToken, actions});
+const client = new Wit({accessToken, handleMessage});
 interactive(client);

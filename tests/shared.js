@@ -62,39 +62,15 @@ module.exports.runTests = (wit) => {
 
     it('tests that Wit has correct functions', () => {
       const witFunctions = Object.keys(client);
-      expect(witFunctions).to.eql(['config', '_sessions', 'message', 'converse', 'runActions']);
+      expect(witFunctions).to.eql(['config', '_sessions', 'message']);
     });
 
     it('tests message', () => {
       return client.message('Hello', {})
         .then((data) => {
-          expect(data.entities.intent[0].value).to.be.equal('greet');
+          expect(data.entities.greetings[0].value).to.be.equal('true');
           expect(data._text).to.be.equal('Hello');
         });
-    });
-
-    it('tests converse', () => {
-      return client.converse(`session-${Date.now()}`, 'Hello', {})
-        .then((data) => {
-          expect(data.entities.intent[0].value).to.be.equal('greet');
-          expect(data.msg).to.be.equal('Hello to you too!');
-        });
-    });
-
-    it('tests runActions', () => {
-      const actions = {
-        send: (request, response) => new Promise((resolve) => {
-          expect(request.entities.intent[0].value).to.be.equal('greet');
-          expect(request.text).to.be.equal('Hello');
-          expect(response.text).to.be.equal('Hello to you too!');
-          resolve();
-        })
-      };
-      client = new Wit({
-        accessToken: process.env.WIT_TOKEN,
-        actions
-      });
-      return client.runActions(`session-${Date.now()}`, 'Hello', {}, 2);
     });
   });
 
