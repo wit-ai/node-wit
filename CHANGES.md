@@ -1,4 +1,4 @@
-## v5.5.0
+## v5.0.0
 Since we have sunsetted Stories, we have removed `converse` and `runActions`. You can learn more about how to migrate your apps here: https://github.com/wit-ai/wit-stories-migration-tutorial
 
 ### Breaking changes
