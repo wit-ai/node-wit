@@ -40,7 +40,6 @@ The Wit constructor takes the following parameters:
 * `accessToken` - the access token of your Wit instance
 * `logger` - (optional) the object handling the logging.
 * `apiVersion` - (optional) the API version to use instead of the recommended one
-* `ha`
 
 The `logger` object should implement the methods `debug`, `info`, `warn` and `error`.
 They can receive an arbitrary number of parameters to log.
