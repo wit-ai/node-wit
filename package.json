@@ -18,7 +18,10 @@
   "repository": "https://github.com/wit-ai/node-wit",
   "author": "The Wit Team <help@wit.ai>",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "isomorphic-fetch": "^2.2.1",
+    "request": "^2.83.0",
     "uuid": "^3.0.0"
   },
   "engines": {

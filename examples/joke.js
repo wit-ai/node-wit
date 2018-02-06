@@ -49,11 +49,11 @@ const firstEntityValue = (entities, entity) => {
 };
 
 const handleMessage = ({entities}) => {
-  const tellJoke = firstEntityValue(entities, 'getJoke');
+  const getJoke = firstEntityValue(entities, 'getJoke');
   const greetings = firstEntityValue(entities, 'greetings');
   const category = firstEntityValue(entities, 'category');
   const sentiment = firstEntityValue(entities, 'sentiment');
-  if (tellJoke) {
+  if (getJoke) {
     if (category) {
       const jokes = allJokes[category];
       console.log(jokes[Math.floor(Math.random() * jokes.length)]);
@@ -64,10 +64,9 @@ const handleMessage = ({entities}) => {
     const reply = sentiment === 'positive' ? 'Glad you liked it.' : 'Hmm.';
     console.log(reply);
   } else if (greetings) {
-    console.log('hey this is joke bot :)');
+    console.log("hey this is joke bot :)");
   } else {
-    const reply = "I can tell jokes! Say 'tell me a joke about tech'!";
-    console.log(reply);
+    console.log("I can tell jokes! Say 'tell me a joke about tech'!";
   }
 };
 
