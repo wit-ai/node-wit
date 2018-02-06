@@ -51,7 +51,8 @@ const printWikidataDescription = (celebrity) => {
   const wikidataID = celebrity.external && celebrity.external.wikidata;
   if (!wikidataID) {
     // in case wikidata id isn't available
-    console.log(`I recognize ${celebrity.name}!`)
+    console.log(`I recognize ${celebrity.name}!`);
+    return;
   }
   const fullUrl = `https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=${wikidataID}&props=descriptions&languages=en`;
   return fetch(fullUrl, {
