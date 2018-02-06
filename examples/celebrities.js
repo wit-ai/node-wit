@@ -38,8 +38,18 @@ const handleMessage = ({entities}) => {
   const greetings = firstEntityValue(entities, 'greetings');
   const celebrity = firstEntityValue(entities, 'notable_person');
   if (celebrity) {
+<<<<<<< HEAD
     // We can call wikidata API for more info here
     printWikidataDescription(celebrity);
+=======
+    if (celebrity.external && celebrity.external.wikidata) {
+      // We can call wikidate API for more information here
+      printWikidataDescription(celebrity);
+    } else {
+      // Or we can return the celebrity's full name
+      console.log(`I recognize ${celebrity.name}!`);
+    }
+>>>>>>> 61f46f5ce8ef1bc23f284f990a7a04df3bb25c4d
   } else if (greetings) {
     console.log("Hi! You can say something like 'Tell me about Beyonce'");
   } else {
@@ -48,11 +58,15 @@ const handleMessage = ({entities}) => {
 };
 
 const printWikidataDescription = (celebrity) => {
+<<<<<<< HEAD
   const wikidataID = celebrity.external && celebrity.external.wikidata;
   if (!wikidataID) {
     // in case wikidata id isn't available
     console.log(`I recognize ${celebrity.name}!`)
   }
+=======
+  const wikidataID = celebrity.external.wikidata;
+>>>>>>> 61f46f5ce8ef1bc23f284f990a7a04df3bb25c4d
   const fullUrl = `https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=${wikidataID}&props=descriptions&languages=en`;
   return fetch(fullUrl, {
     method: 'GET',
