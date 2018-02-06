@@ -19,10 +19,5 @@ const accessToken = (() => {
   return process.argv[2];
 })();
 
-const handleMessage = (rsp) => {
-  console.log('user said: ', rsp._text);
-  console.log('extracted these entities: ', JSON.stringify(rsp.entities));
-}
-
 const client = new Wit({accessToken});
 interactive(client);

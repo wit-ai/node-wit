@@ -19,7 +19,7 @@ const accessToken = (() => {
   return process.argv[2];
 })();
 
-// Quickstart example
+// Celebrities example
 // See https://wit.ai/aforaleka/wit-example-celebrities/
 
 const firstEntityValue = (entities, entity) => {
@@ -38,10 +38,15 @@ const handleMessage = ({entities}) => {
   const greetings = firstEntityValue(entities, 'greetings');
   const celebrity = firstEntityValue(entities, 'notable_person');
   if (celebrity) {
-    // we can call the wikidata API to get more information about the person using the wikidata ID
-    printWikidataDescription(celebrity);
+    if (celebrity.external && celebrity.external.wikidata) {
+      // We can call wikidate API for more information here
+      printWikidataDescription(celebrity);
+    } else {
+      // Or we can return the celebrity's full name
+      console.log(`I recognize ${celebrity.name}!`);
+    }
   } else if (greetings) {
-    console.log('Hi! You can say something like "Tell me about Beyonce"');
+    console.log("Hi! You can say something like 'Tell me about Beyonce'");
   } else {
     console.log("Umm. I don't recognize that name. Which celebrity do you want to learn about?");
   }
@@ -49,20 +54,18 @@ const handleMessage = ({entities}) => {
 
 const printWikidataDescription = (celebrity) => {
   const wikidataID = celebrity.external.wikidata;
-  const wikidataURL = 'https://www.wikidata.org';
-  const fullURL = wikidataURL + `/w/api.php?action=wbgetentities&format=json&ids=${wikidataID}&props=descriptions&languages=en`;
-  return fetch(fullURL, {
+  const fullUrl = `https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=${wikidataID}&props=descriptions&languages=en`;
+  return fetch(fullUrl, {
     method: 'GET',
     headers: new Headers({
       'Api-User-Agent': 'wit-ai-example'
     })
   })
-  .then(response => Promise.all([response.json(), response.status]))
-  .then(response => {
-    const [json, _] = response;
-    console.log('ooo yes I know ' + celebrity.name + ' -- ' + json.entities[wikidataID].descriptions.en.value);
-  })
-  .catch(err => console.error(err))
+    .then(response => Promise.resolve(response.json()))
+    .then(data => {
+      console.log(`ooo yes I know ${celebrity.name} -- ${data.entities[wikidataID].descriptions.en.value}`);
+    })
+    .catch(err => console.error(err))
 };
 
 const client = new Wit({accessToken});
