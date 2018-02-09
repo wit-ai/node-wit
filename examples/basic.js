@@ -19,14 +19,5 @@ const accessToken = (() => {
   return process.argv[2];
 })();
 
-const actions = {
-  send(request, response) {
-    const {sessionId, context, entities} = request;
-    const {text, quickreplies} = response;
-    console.log('user said...', request.text);
-    console.log('sending...', JSON.stringify(response));
-  },
-};
-
-const client = new Wit({accessToken, actions});
+const client = new Wit({accessToken});
 interactive(client);
