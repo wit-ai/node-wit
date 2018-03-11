@@ -66,7 +66,7 @@ const handleMessage = ({entities}) => {
   } else if (greetings) {
     console.log("hey this is joke bot :)");
   } else {
-    console.log("I can tell jokes! Say 'tell me a joke about tech'!";
+    console.log("I can tell jokes! Say 'tell me a joke about tech'!");
   }
 };
 
