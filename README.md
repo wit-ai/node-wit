@@ -21,7 +21,7 @@ node --harmony_destructuring examples/basic.js <MY_TOKEN>
 node examples/basic.js <MY_TOKEN>
 ```
 
-See `examples` folder for more examples.
+See `examples` folder for more examples. Some examples have associated .zip files, do not forget to import those [when creating a new app](https://wit.ai/apps/new) and grab your access token from the Settings section.
 
 ### Messenger integration example
 

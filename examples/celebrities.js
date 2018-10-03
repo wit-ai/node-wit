@@ -14,6 +14,7 @@ try {
 const accessToken = (() => {
   if (process.argv.length !== 3) {
     console.log('usage: node examples/celebrities.js <wit-access-token>');
+    console.log('Please import the corresponding .zip file upon creating an app and grab your access token from the Settings page');
     process.exit(1);
   }
   return process.argv[2];
