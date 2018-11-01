@@ -3,9 +3,6 @@
 We want to make contributing to this project as easy and transparent as
 possible.
 
-## Our Development Process
-... (in particular how this is synced with internal changes to the project)
-
 ## Pull Requests
 We actively welcome your pull requests.
 
