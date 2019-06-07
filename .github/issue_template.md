@@ -1,4 +1,4 @@
-**Do you want to request a *feature*, report a *bug*, or ask a *question* about wit?**
+**Do you want to request a *feature*, report a *bug*, or ask a *question* about node-wit?**
 
 **What is the current behavior?**
 
