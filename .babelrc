@@ -3,6 +3,6 @@
     "es2015",
     "stage-0"
   ],
-  "comments": true,
+  "comments": false,
   "sourceMaps": false
 }
