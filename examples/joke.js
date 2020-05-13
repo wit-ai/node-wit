@@ -25,7 +25,7 @@ const accessToken = (() => {
 })();
 
 // Joke example
-// See https://wit.ai/aforaleka/wit-example-joke-bot/
+// See https://wit.ai/aleka/wit-example-joke-bot/
 
 const allJokes = {
   chuck: [
@@ -41,23 +41,23 @@ const allJokes = {
   ],
 };
 
-const firstEntityValue = (entities, entity) => {
-  const val = entities && entities[entity] &&
-    Array.isArray(entities[entity]) &&
-    entities[entity].length > 0 &&
-    entities[entity][0].value
+const firstValue = (obj, key) => {
+  const val = obj && obj[key] &&
+    Array.isArray(obj[key]) &&
+    obj[key].length > 0 &&
+    obj[key][0].value
   ;
   if (!val) {
     return null;
   }
-  return typeof val === 'object' ? val.value : val;
+  return val;
 };
 
-const handleMessage = ({entities}) => {
-  const getJoke = firstEntityValue(entities, 'getJoke');
-  const greetings = firstEntityValue(entities, 'greetings');
-  const category = firstEntityValue(entities, 'category');
-  const sentiment = firstEntityValue(entities, 'sentiment');
+const handleMessage = ({entities, traits}) => {
+  const getJoke = firstValue(traits, 'getJoke');
+  const greetings = firstValue(traits, 'wit$greetings');
+  const category = firstValue(entities, 'category:category');
+  const sentiment = firstValue(traits, 'wit$sentiment');
   if (getJoke) {
     if (category) {
       const jokes = allJokes[category];

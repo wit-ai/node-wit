@@ -158,10 +158,12 @@ app.post('/webhook', (req, res) => {
             .catch(console.error);
           } else if (text) {
             // We received a text message
-            // Let's run /message on the text to extract some entities
-            wit.message(text).then(({entities}) => {
-              // You can customize your response to these entities
+            // Let's run /message on the text to extract some entities, intents and traits
+            wit.message(text).then(({entities, intents, traits}) => {
+              // You can customize your response using these
+              console.log(intents);
               console.log(entities);
+              console.log(traits);
               // For now, let's reply with another automatic message
               fbMessage(sender, `We've received your message: ${text}.`);
             })
