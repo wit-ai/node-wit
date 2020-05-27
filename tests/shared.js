@@ -72,8 +72,8 @@ module.exports.runTests = (wit) => {
     it('tests message', () => {
       return client.message('Hello', {})
         .then((data) => {
-          expect(data.entities.greetings[0].value).to.be.equal('true');
-          expect(data._text).to.be.equal('Hello');
+          expect(data.traits['wit$greetings'][0].value).to.be.equal('true');
+          expect(data.text).to.be.equal('Hello');
         });
     });
   });

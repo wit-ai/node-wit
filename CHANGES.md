@@ -1,3 +1,7 @@
+## v6.0.0
+Updated API version to latest: `20200513`.
+Browse the latest HTTP API documentation [here](https://wit.ai/docs/http/20200513#get__message_link).
+
 ## v5.0.0
 The most important change is the removal of `.converse()` and `.runActions()`. Follow the migration tutorial [here](https://github.com/wit-ai/wit-stories-migration-tutorial), or [read more here](https://wit.ai/blog/2017/07/27/sunsetting-stories).
 
