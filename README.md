@@ -21,7 +21,7 @@ node --harmony_destructuring examples/basic.js <MY_TOKEN>
 node examples/basic.js <MY_TOKEN>
 ```
 
-See `examples` folder for more examples. Some examples have associated .zip files, do not forget to import those [when creating a new app](https://wit.ai/apps/new) and grab your access token from the Settings section.
+See `examples` folder for more examples. Some examples have associated .zip files, do not forget to import those [when creating a new app](https://wit.ai/v2/apps) and grab your access token from the Settings section.
 
 ### Messenger integration example
 
@@ -30,7 +30,7 @@ See `examples/messenger.js` for a thoroughly documented tutorial.
 ### Overview
 
 The Wit module provides a Wit class with the following methods:
-* `message` - the Wit [message](https://wit.ai/docs/http/20200513#get-intent-via-text-link) API
+* `message` - the Wit [message](https://wit.ai/docs/http/20200513#get__message_link) API
 
 You can also require a library function to test out your bot in the terminal. `require('node-wit').interactive`
 
@@ -59,7 +59,7 @@ console.log(client.message('set an alarm tomorrow at 7am'));
 
 ### .message()
 
-The Wit [message](https://wit.ai/docs/http/20200513#get-intent-via-text-link) API.
+The Wit [message](https://wit.ai/docs/http/20200513#get__message_link) API.
 
 Takes the following parameters:
 * `message` - the text you want Wit.ai to extract the information from
