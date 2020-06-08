@@ -1,8 +1,0 @@
-{
-  "presets": [
-    "es2015",
-    "stage-0"
-  ],
-  "comments": true,
-  "sourceMaps": false
-}
