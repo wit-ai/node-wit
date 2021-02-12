@@ -1,3 +1,7 @@
+## v6.0.1
+Removed unused `requests` dependency
+Updated various dependencies.
+
 ## v6.0.0
 Updated API version to latest: `20200513`.
 Browse the latest HTTP API documentation [here](https://wit.ai/docs/http/20200513#get__message_link).
