@@ -1,5 +1,5 @@
 ## v6.0.1
-Removed unused `requests` dependency
+Removed unused `request` dependency
 Updated various dependencies.
 
 ## v6.0.0
