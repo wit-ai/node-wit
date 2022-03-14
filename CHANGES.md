@@ -1,3 +1,8 @@
+## v6.1.0
+Bumped API version to `20210928`.
+Moved API version from `Accept` header to `v` HTTP parameter.
+Kaizens.
+
 ## v6.0.1
 Removed unused `request` dependency
 Updated various dependencies.
