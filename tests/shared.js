@@ -1,5 +1,5 @@
 /**
- * Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+ * Copyright (c) Meta Platforms, Inc. and its affiliates. All Rights Reserved.
  */
 
 'use strict';
@@ -7,7 +7,7 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
 
-module.exports.runTests = (wit) => {
+module.exports.runTests = wit => {
   const log = wit.log;
   const Wit = wit.Wit;
   const interactive = wit.interactive;
@@ -61,20 +61,19 @@ module.exports.runTests = (wit) => {
 
   describe('Wit', () => {
     let client = new Wit({
-      accessToken: process.env.WIT_TOKEN
+      accessToken: process.env.WIT_TOKEN,
     });
 
     it('tests that Wit has correct functions', () => {
       const witFunctions = Object.keys(client);
-      expect(witFunctions).to.eql(['config', '_sessions', 'message']);
+      expect(witFunctions).to.eql(['config', 'message', 'speech']);
     });
 
     it('tests message', () => {
-      return client.message('Hello', {})
-        .then((data) => {
-          expect(data.traits['wit$greetings'][0].value).to.be.equal('true');
-          expect(data.text).to.be.equal('Hello');
-        });
+      return client.message('Hello', {}).then(data => {
+        expect(data.traits['wit$greetings'][0].value).to.be.equal('true');
+        expect(data.text).to.be.equal('Hello');
+      });
     });
   });
 

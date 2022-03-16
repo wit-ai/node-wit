@@ -1,17 +1,26 @@
+## v6.1.1
+
+- Basic `POST /speech` integration.
+- `!speech` support for interactive.
+
 ## v6.1.0
+
 Bumped API version to `20210928`.
 Moved API version from `Accept` header to `v` HTTP parameter.
 Kaizens.
 
 ## v6.0.1
+
 Removed unused `request` dependency
 Updated various dependencies.
 
 ## v6.0.0
+
 Updated API version to latest: `20200513`.
 Browse the latest HTTP API documentation [here](https://wit.ai/docs/http/20200513#get__message_link).
 
 ## v5.0.0
+
 The most important change is the removal of `.converse()` and `.runActions()`. Follow the migration tutorial [here](https://github.com/wit-ai/wit-stories-migration-tutorial), or [read more here](https://wit.ai/blog/2017/07/27/sunsetting-stories).
 
 ### Breaking changes
@@ -21,6 +30,7 @@ The most important change is the removal of `.converse()` and `.runActions()`. F
 - updated wit-ai-basic-app-for-tests.zip for testing
 
 ## v4.3.0
+
 - `converse` and `runActions` are deprecated
 - `interactive` now calls `message`
 
@@ -51,7 +61,6 @@ We moved to a Promise-based API, instead of callbacks. This makes the code simpl
 
 See `./examples` to see how to use the new API.
 
-
 ### Breaking changes
 
 - `say` renamed to `send` to reflect that it deals with more than just text
@@ -66,6 +75,7 @@ See `./examples` to see how to use the new API.
 - allows for overriding API version, by setting `WIT_API_VERSION`
 
 ## v3.3.1
+
 - adding API versioning (defaults to `20160516`)
 - warns instead of throwing when validating actions
 - fixing null values when cloning context

@@ -1,6 +1,6 @@
 {
   "name": "node-wit",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "Wit.ai Node.js SDK",
   "keywords": [
     "wit",
@@ -23,6 +23,7 @@
     "https-proxy-agent": "^5.0.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.14",
+    "mic": "^2.1.2",
     "uuid": "^3.0.0"
   },
   "engines": {

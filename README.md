@@ -30,28 +30,32 @@ See `examples/messenger.js` for a thoroughly documented tutorial.
 ### Overview
 
 The Wit module provides a Wit class with the following methods:
-* `message` - the Wit [message](https://wit.ai/docs/http/20200513#get__message_link) API
 
-You can also require a library function to test out your bot in the terminal. `require('node-wit').interactive`
+- `message` - the Wit [message](https://wit.ai/docs/http#get__message_link) API;
+- `speech` - the Wit [speech](https://wit.ai/docs/http#post__speech_link) API.
+
+You can also require a library function to test out your Wit app in the terminal. `require('node-wit').interactive`
 
 ### Wit class
 
 The Wit constructor takes the following parameters:
-* `accessToken` - the access token of your Wit instance
-* `logger` - (optional) the object handling the logging.
-* `apiVersion` - (optional) the API version to use instead of the recommended one
+
+- `accessToken` - the access token of your Wit instance
+- `logger` - (optional) the object handling the logging.
+- `apiVersion` - (optional) the API version to use instead of the recommended one
 
 The `logger` object should implement the methods `debug`, `info`, `warn` and `error`.
 They can receive an arbitrary number of parameters to log.
 For convenience, we provide a `Logger` class, taking a log level parameter
 
 Example:
+
 ```js
 const {Wit, log} = require('node-wit');
 
 const client = new Wit({
   accessToken: MY_TOKEN,
-  logger: new log.Logger(log.DEBUG) // optional
+  logger: new log.Logger(log.DEBUG), // optional
 });
 
 console.log(client.message('set an alarm tomorrow at 7am'));
@@ -59,34 +63,52 @@ console.log(client.message('set an alarm tomorrow at 7am'));
 
 ### .message()
 
-The Wit [message](https://wit.ai/docs/http/20200513#get__message_link) API.
+The Wit [message](https://wit.ai/docs/http/#get__message_link) API.
 
 Takes the following parameters:
-* `message` - the text you want Wit.ai to extract the information from
-* `context` - (optional) the object representing the session state
+
+- `q` - the text input you want Wit.ai to extract the information from
+- `context` - (optional) the [Context](https://wit.ai/docs/http/#context_link) object
+- `n` - (optional) the max number of intents and traits to get back
 
 Example:
+
 ```js
 const client = new Wit({accessToken: 'MY_TOKEN'});
-client.message('what is the weather in London?', {})
-.then((data) => {
-  console.log('Yay, got Wit.ai response: ' + JSON.stringify(data));
-})
-.catch(console.error);
+client
+  .message('what is the weather in London?', {})
+  .then(data => {
+    console.log('Yay, got Wit.ai response: ' + JSON.stringify(data));
+  })
+  .catch(console.error);
 ```
+
+### .speech()
+
+The Wit [speech](https://wit.ai/docs/http#post__speech_link) API.
+
+Takes the following paramters:
+
+- `contentType` - the Content-Type header
+- `body` - the audio `Readable` stream
+- `context` - (optional) the [Context](https://wit.ai/docs/http/#context_link) object
+- `n` - (optional) the max number of intents and traits to get back
+
+See `lib/interactive.js` for an example.
 
 ### interactive
 
-Starts an interactive conversation with your bot.
+Starts an interactive conversation with your Wit app.
+Use `!speech` to send an audio request from the microphone, or enter any text input.
 
 Example:
+
 ```js
 const {interactive} = require('node-wit');
 interactive(client);
 ```
 
 See the [docs](https://wit.ai/docs) for more information.
-
 
 ## Changing the API version
 
@@ -97,11 +119,13 @@ You can target a specific version by passing the `apiVersion` parameter when cre
 ```json
 {
   "text": "hello",
-  "intents": [ {
-    "id": "1353535345345",
-    "name": "greet",
-    "confidence": 0.9753
-  } ],
+  "intents": [
+    {
+      "id": "1353535345345",
+      "name": "greet",
+      "confidence": 0.9753
+    }
+  ],
   "entities": [],
   "traits": []
 }
