@@ -91,6 +91,9 @@ Takes the following paramters:
 - `context` - (optional) the [Context](https://wit.ai/docs/http/#context_link) object
 - `n` - (optional) the max number of intents and traits to get back
 
+Emits `partialTranscription` and `fullTranscription` events.
+The Promise returns the final JSON payload.
+
 See `lib/interactive.js` for an example.
 
 ### interactive

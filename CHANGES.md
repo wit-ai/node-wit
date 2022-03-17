@@ -1,3 +1,9 @@
+## v6.2.1
+
+- Emits `partialTranscription` and `fullTranscription` events.
+- Shows microphone input feedback for `interactive`.
+- Includes `proxy` support for `speech()`.
+
 ## v6.2.0
 
 Requires Node.js >= 6.17.1 to support ES6 directly.
