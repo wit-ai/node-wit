@@ -15,13 +15,10 @@ npm install --save node-wit
 Run in your terminal:
 
 ```bash
-# Node.js <= 6.x.x, add the flag --harmony_destructuring
-node --harmony_destructuring examples/basic.js <MY_TOKEN>
-# Node.js >= v6.x.x
-node examples/basic.js <MY_TOKEN>
+node examples/basic.js <WIT_TOKEN>
 ```
 
-See `examples` folder for more examples. Some examples have associated .zip files, do not forget to import those [when creating a new app](https://wit.ai/v2/apps) and grab your access token from the Settings section.
+See `examples` folder for more examples. Some examples have associated .zip files, do not forget to import those [when creating a new app](https://wit.ai/apps) and grab your access token from the Settings section.
 
 ### Messenger integration example
 

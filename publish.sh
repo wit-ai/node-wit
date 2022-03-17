@@ -1,12 +1,12 @@
 #!/bin/bash
-# Copyright (c) Facebook, Inc. and its affiliates. All rights reserved.
+# Copyright (c) Meta Platforms, Inc. and its affiliates. All rights reserved.
 
 set -ex
 
 mkdir -p dist
 cp package.json dist
-npx babel lib --out-dir dist/lib
-npx babel index.js --out-file dist/index.js
+cp index.js dist
+cp -R lib dist/lib
 mocha ./tests/dist.js
 (
   cd dist

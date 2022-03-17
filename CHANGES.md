@@ -1,3 +1,7 @@
+## v6.2.0
+
+Requires Node.js >= 6.17.1 to support ES6 directly.
+
 ## v6.1.1
 
 - Basic `POST /speech` integration.

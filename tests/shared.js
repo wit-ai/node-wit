@@ -65,8 +65,9 @@ module.exports.runTests = wit => {
     });
 
     it('tests that Wit has correct functions', () => {
-      const witFunctions = Object.keys(client);
-      expect(witFunctions).to.eql(['config', 'message', 'speech']);
+      expect(Object.keys(client)).to.eql(['config']);
+      expect(typeof client.message).to.eql('function');
+      expect(typeof client.speech).to.eql('function');
     });
 
     it('tests message', () => {
