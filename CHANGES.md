@@ -1,3 +1,7 @@
+## v6.2.2
+
+- Fixes parsing for large HTTP chunks.
+
 ## v6.2.1
 
 - Emits `partialTranscription` and `fullTranscription` events.
