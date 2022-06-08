@@ -1,3 +1,9 @@
+## Breaking changes
+
+- Bumped API version to `20220608`.
+- Emits `partialUnderstanding` events (live understanding support).
+- Updated `apiVersion` type from string to number.
+
 ## v6.2.2
 
 - Fixes parsing for large HTTP chunks.
