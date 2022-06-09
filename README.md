@@ -91,7 +91,7 @@ Takes the following paramters:
 - `context` - (optional) the [Context](https://wit.ai/docs/http/#context_link) object
 - `n` - (optional) the max number of intents and traits to get back
 
-Emits `partialTranscription` and `fullTranscription` events.
+Emits `partialTranscription`, `partialUnderstanding` and `fullTranscription` events.
 The Promise returns the final JSON payload.
 
 See `lib/interactive.js` for an example.
@@ -112,9 +112,12 @@ See the [docs](https://wit.ai/docs) for more information.
 
 ## Changing the API version
 
+The default (recommended, latest) API version is set in `config.js`.
+
 On May 13th, 2020, the `GET /message` API was updated to reflect the new data model: intents, traits and entities are now distinct.
 We updated the SDK to the latest version: `20200513`.
-You can target a specific version by passing the `apiVersion` parameter when creating the `Wit` object.
+You can target a specific version by passing the `apiVersion` parameter when
+creating the `Wit` object.
 
 ```json
 {
