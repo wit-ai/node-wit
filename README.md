@@ -96,6 +96,37 @@ The Promise returns the final JSON payload.
 
 See `lib/interactive.js` for an example.
 
+### .dictation()
+
+The Wit [dictation](https://wit.ai/docs/http#post__dictation_link) API.
+
+Takes the following paramters:
+
+- `contentType` - the Content-Type header
+- `body` - the audio `Readable` stream
+
+Emits `partialTranscription`, and `fullTranscription` events.
+The Promise returns the final JSON payload.
+
+See `examples/synthesize-speech.js` for an example.
+
+### .synthesize()
+
+The Wit [synthesize](https://wit.ai/docs/http#post__synthesize_link) API.
+
+Takes the following paramters (click on link above for more details):
+
+- `q` - The query containting text to synthesize
+- `voice` - The voice name. For voices and styles available, see GET [voices.](https://wit.ai/docs/http#get__voices_link)
+- `style` - (optional) The style to speak in
+- `speed` - (optional) the speed the text is spoken
+- `pitch` - (optional) the pitch of the audio
+- `gain` - (optional) the gain of the audio
+
+The Promise returns the final response, with the body containing the audio stream of the synthesized text.
+
+See `examples/synthesize-speech.js` for an example.
+
 ### interactive
 
 Starts an interactive conversation with your Wit app.
