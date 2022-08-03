@@ -1,9 +1,19 @@
+## Composer alpha integration
+
+- Composer integration: `.runComposerAudio()`, `.runComposer()` (and raw `.converse()`
+  + `.event()`) + `actions` support
+- Bumped API version to `20220801`.
+- interactive now uses Composer for text inputs, use `!message` for `GET /message` and `!converse` for Composer audio inputs
+- added pizza example
+
 ## v6.4.0
+
 - Add `POST /synthesize` integration.
 - Add `POST /dictation` integration.
 - New example using `synthesize()` and `dictation()`.
 
 ## v6.3.0
+
 - `speech()` emits `partialUnderstanding` events to support live understanding.
 - `apiVersion` updated to `20220608` and its type is now a number.
 

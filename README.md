@@ -28,8 +28,14 @@ See `examples/messenger.js` for a thoroughly documented tutorial.
 
 The Wit module provides a Wit class with the following methods:
 
+- `runComposerAudio` - the [Composer](https://wit.ai/docs/recipes#composer) integration for voice;
+- `runComposer` - the [Composer](https://wit.ai/docs/recipes#composer) integration for other inputs;
+- `converse` - the Wit [converse](https://wit.ai/docs/http/#post__converse_link) API;
+- `event` - the Wit [event](https://wit.ai/docs/http#post__event_link) API;
 - `message` - the Wit [message](https://wit.ai/docs/http#get__message_link) API;
-- `speech` - the Wit [speech](https://wit.ai/docs/http#post__speech_link) API.
+- `speech` - the Wit [speech](https://wit.ai/docs/http#post__speech_link) API;
+- `dictation` - the Wit [dictation](https://wit.ai/docs/http#post__dictation_link) API;
+- `synthetize` - the Wit [synthetize](https://wit.ai/docs/http#post__synthetize_link) API.
 
 You can also require a library function to test out your Wit app in the terminal. `require('node-wit').interactive`
 
@@ -37,8 +43,9 @@ You can also require a library function to test out your Wit app in the terminal
 
 The Wit constructor takes the following parameters:
 
-- `accessToken` - the access token of your Wit instance
-- `logger` - (optional) the object handling the logging.
+- `accessToken` - the access token of your Wit instance;
+- `actions` - the object of [client action definitions for Composer](https://wit.ai/docs/recipes#run-custom-code);
+- `logger` - (optional) the object handling the logging;
 - `apiVersion` - (optional) the API version to use instead of the recommended one
 
 The `logger` object should implement the methods `debug`, `info`, `warn` and `error`.
@@ -50,13 +57,82 @@ Example:
 ```js
 const {Wit, log} = require('node-wit');
 
+const actions = {
+  confirm_order(contextMap) {
+    return {context_map: {...contextMap, order_confirmation: 'PIZZA42'}};
+  },
+};
+
 const client = new Wit({
   accessToken: MY_TOKEN,
+  actions,
   logger: new log.Logger(log.DEBUG), // optional
 });
 
 console.log(client.message('set an alarm tomorrow at 7am'));
 ```
+
+## .runComposerAudio()
+
+The [Composer](https://wit.ai/docs/recipes#composer) integration for voice.
+
+Takes the following parameters:
+
+- `sessionId` - a unique string identifying the user session
+- `contentType` - the Content-Type header
+- `body` - the audio `Readable` stream
+- `contextMap` - the [context map](https://wit.ai/docs/recipes#custom-context) object
+
+Emits `partialTranscription`, `response` and `fullTranscription` events.
+Run the provided `actions` as instructed by the API response, and calls back with the resulting updated context map (unless the action returns `stop: true`).
+The Promise returns the final JSON payload of the last API call ([POST /converse](https://wit.ai/docs/http#post__converse_link) or [POST
+/event](https://wit.ai/docs/http#post__event_link)).
+
+See `lib/interactive.js` for an example.
+
+## .runComposer()
+
+The [Composer](https://wit.ai/docs/recipes#composer) integration for other
+inputs, including text.
+
+Takes the following parameters:
+
+- `sessionId` - a unique string identifying the user session
+- `contextMap` - the [context map](https://wit.ai/docs/recipes#custom-context) object
+- `message` - the optional user text query
+
+Emits `response` events.
+Run the provided `actions` as instructed by the API response, and calls back with the resulting updated context map (unless the action returns `stop: true`).
+The Promise returns the final JSON payload of the last [POST /event](https://wit.ai/docs/http#post__event_link) API call.
+
+See `lib/interactive.js` for an example.
+
+## .converse()
+
+The Wit [converse](https://wit.ai/docs/http/#post__converse_link) API.
+
+Takes the following parameters:
+
+- `sessionId` - a unique string identifying the user session
+- `contentType` - the Content-Type header
+- `body` - the audio `Readable` stream
+- `contextMap` - the [context map](https://wit.ai/docs/recipes#custom-context) object
+
+Emits `partialTranscription` and `fullTranscription` events.
+
+We recommend to use `.runComposerAudio()` instead of this raw API.
+
+## .event()
+
+The Wit [event](https://wit.ai/docs/http#post__event_link) API.
+
+Takes the following parameters:
+
+- `sessionId` - a unique string identifying the user session
+- `contextMap` - the [context map](https://wit.ai/docs/recipes#custom-context) object
+- `message` - the optional user text query
+
+We recommend to use `.runComposer()` instead of this raw API.
 
 ### .message()
 
@@ -79,6 +155,8 @@ client
   })
   .catch(console.error);
 ```
+
+See `lib/interactive.js` for another example integration.
 
 ### .speech()
 
@@ -130,7 +208,14 @@ See `examples/synthesize-speech.js` for an example.
 ### interactive
 
 Starts an interactive conversation with your Wit app.
-Use `!speech` to send an audio request from the microphone, or enter any text input.
+
+Full conversational interactions:
+Use `!converse` to send an audio request from the microphone using Composer.
+Enter any text input to send a text request using Composer.
+
+One-off natural language requests:
+Use `!speech` to send an audio request from the microphone.
+Use `!message <your message>` to send a text request.
 
 Example:
 
@@ -146,9 +231,7 @@ See the [docs](https://wit.ai/docs) for more information.
 The default (recommended, latest) API version is set in `config.js`.
 
 On May 13th, 2020, the `GET /message` API was updated to reflect the new data model: intents, traits and entities are now distinct.
-We updated the SDK to the latest version: `20200513`.
-You can target a specific version by passing the `apiVersion` parameter when
-creating the `Wit` object.
+You can target a specific version by passing the `apiVersion` parameter when creating the `Wit` object.
 
 ```json
 {
