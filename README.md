@@ -35,7 +35,7 @@ The Wit module provides a Wit class with the following methods:
 - `message` - the Wit [message](https://wit.ai/docs/http#get__message_link) API;
 - `speech` - the Wit [speech](https://wit.ai/docs/http#post__speech_link) API;
 - `dictation` - the Wit [dictation](https://wit.ai/docs/http#post__dictation_link) API;
-- `synthetize` - the Wit [synthetize](https://wit.ai/docs/http#post__synthetize_link) API.
+- `synthesize` - the Wit [synthesize](https://wit.ai/docs/http#post__synthesize_link) API.
 
 You can also require a library function to test out your Wit app in the terminal. `require('node-wit').interactive`
 
