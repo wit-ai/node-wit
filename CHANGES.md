@@ -1,7 +1,6 @@
-## Composer alpha integration
+## v6.5.0 - Composer alpha integration
 
-- Composer integration: `.runComposerAudio()`, `.runComposer()` (and raw `.converse()`
-  + `.event()`) + `actions` support
+- Composer integration: `.runComposerAudio()`, `.runComposer()` (and raw `.converse()` + `.event()`) + `actions` support
 - Bumped API version to `20220801`.
 - interactive now uses Composer for text inputs, use `!message` for `GET /message` and `!converse` for Composer audio inputs
 - added pizza example
