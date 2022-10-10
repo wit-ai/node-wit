@@ -256,4 +256,15 @@ You can target a specific version by passing the `apiVersion` parameter when cre
 
 ## License
 
-The license for node-wit can be found in LICENSE file in the root directory of this source tree.
+The license for node-wit can be found in LICENSE file in the root directory of
+this source tree.
+
+## Terms of Use
+Our terms of use can be found at https://opensource.facebook.com/legal/terms.
+
+Use of Wit.ai services fall under the terms of use found here: https://wit.ai/terms.
+
+## Privacy Policy
+Our privacy policy can be found at https://opensource.facebook.com/legal/privacy.
+
+The privacy policy for the Wit.ai service can be found at https://wit.ai/privacy.
