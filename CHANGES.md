@@ -1,3 +1,6 @@
+## v6.5.1
+- Update uuid to version 9.0.0
+
 ## v6.5.0 - Composer alpha integration
 
 - Composer integration: `.runComposerAudio()`, `.runComposer()` (and raw `.converse()` + `.event()`) + `actions` support
