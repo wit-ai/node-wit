@@ -1,6 +1,6 @@
 {
   "name": "node-wit",
-  "version": "6.5.1",
+  "version": "6.6.0",
   "description": "Wit.ai Node.js SDK",
   "keywords": [
     "wit",
@@ -9,7 +9,8 @@
     "botengine",
     "bots",
     "nlp",
-    "automation"
+    "automation",
+    "composer"
   ],
   "main": "index.js",
   "scripts": {

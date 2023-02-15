@@ -118,7 +118,8 @@ Takes the following parameters:
 - `body` - the audio `Readable` stream
 - `contextMap` - the [context map](https://wit.ai/docs/recipes#custom-context) object
 
-Emits `partialTranscription` and `fullTranscription` events.
+Emits `partialTranscription`, `fullTranscription`, and `response` events. Runs
+intermediate `actions` as instructed by the API.
 
 We recommend to use `.runComposerAudio()` instead of this raw API.
 
@@ -131,6 +132,8 @@ Takes the following parameters:
 - `sessionId` - a unique string identifying the user session
 - `contextMap` - the [context map](https://wit.ai/docs/recipes#custom-context) object
 - `message` - the optional user text query
+
+Emits `response` events, and run intermediate `actions` as instructed by the API.
 
 We recommend to use `.runComposer()` instead of this raw API.
 

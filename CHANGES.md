@@ -1,3 +1,8 @@
+## v6.6.0 - Multi-responses in Composer
+
+- Multi-responses in Composer: `runComposerAudio()`, `.runComposer()` (and raw `.converse()` + `.event()`) now emit `response` events for intermediate responses, and run intermediate actions as well.
+- Bumped API version to `20230215`.
+
 ## v6.5.1
 - Update uuid to version 9.0.0
 
